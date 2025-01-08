@@ -12,13 +12,6 @@ export class Game {
         this.lastTime = 0;
         this.lastTime2 = 0;
 
-        this.touchStartX = 0;
-        this.touchStartY = 0;
-        this.touchEndX = 0;
-        this.touchEndY = 0;
-
-        this.registerTouchEvents();
-
 
     }
     update(){
@@ -149,62 +142,6 @@ export class Game {
             }
         });
     }
-
-    registerTouchEvents() {
-        window.addEventListener('touchstart', (e) => {
-            this.touchStartX = e.touches[0].clientX;
-            this.touchStartY = e.touches[0].clientY;
-        });
-
-        window.addEventListener('touchend', (e) => {
-            this.touchEndX = e.changedTouches[0].clientX;
-            this.touchEndY = e.changedTouches[0].clientY;
-
-            this.handleGesture();
-        });
-    }
-
-    handleGesture() {
-        const deltaX = this.touchEndX - this.touchStartX;
-        const deltaY = this.touchEndY - this.touchStartY;
-
-        if (Math.abs(deltaX) > Math.abs(deltaY)) {
-            // Movimiento horizontal
-            if (deltaX > 0) {
-                this.moveTetrominoRight();
-            } else {
-                this.moveTetrominoLeft();
-            }
-        } else {
-            // Movimiento vertical o rotación
-            if (deltaY > 0) {
-                this.moveTetrominoDown();
-            } else {
-                this.rotateTetrominoCW();
-            }
-        }
-    }
-
-    moveTetrominoRight() {
-        console.log("Tetromino movido a la derecha");
-        // Lógica para mover el tetromino hacia la derecha
-    }
-
-    moveTetrominoLeft() {
-        console.log("Tetromino movido a la izquierda");
-        // Lógica para mover el tetromino hacia la izquierda
-    }
-
-    moveTetrominoDown() {
-        console.log("Tetromino movido hacia abajo");
-        // Lógica para mover el tetromino hacia abajo
-    }
-
-    rotateTetrominoCW() {
-        console.log("Tetromino rotado en sentido horario");
-        // Lógica para rotar el tetromino en sentido horario
-    }
-
 
     
     
